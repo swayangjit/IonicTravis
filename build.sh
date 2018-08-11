@@ -31,10 +31,10 @@ done < "$file"
 
 npm i @ionic/app-scripts
 
-for cordova_plugin in "${CORDOVA[@]}"
-do
-  ionic cordova plugin add $cordova_plugin
-done
+#for cordova_plugin in "${CORDOVA[@]}"
+#do
+#  ionic cordova plugin add $cordova_plugin
+#done
 
 
 buildBranch="$1"
