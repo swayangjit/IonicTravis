@@ -53,7 +53,7 @@ before_install:
 before_script:
 - echo "Before Script"
 script:
-- ./build.sh master
+- ./build.sh $BUILD_BRANCH
 
 env:
   global:

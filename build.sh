@@ -25,11 +25,16 @@ while IFS="=" read -r key value; do
     'cordova'*)
       CORDOVA[$CORDOVA_COUNTER]=$value
       CORDOVA_COUNTER=`expr $CORDOVA_COUNTER + 1`;;
-    'sunbird-cordova'*)
-      SUNBIRD_CORDOVA[$SUNBIRD_CORDOVA_COUNTER]=$value
-      SUNBIRD_CORDOVA_COUNTER=`expr $SUNBIRD_CORDOVA_COUNTER + 1`;;
+    
   esac
 done < "$file"
+
+npm i @ionic/app-scripts
+
+for cordova_plugin in "${CORDOVA[@]}"
+do
+  ionic cordova plugin add $cordova_plugin
+done
 
 
 buildBranch="$1"
