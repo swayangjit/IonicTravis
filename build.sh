@@ -30,6 +30,7 @@ while IFS="=" read -r key value; do
 done < "$file"
 
 npm i @ionic/app-scripts
+npm install
 
 #for cordova_plugin in "${CORDOVA[@]}"
 #do
