@@ -1,0 +1,4 @@
+cordova-plugin=ionic-plugin-keyboard
+cordova-plugin=cordova-plugin-whitelist
+cordova-plugin=cordova-plugin-ionic-webview
+
