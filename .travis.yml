@@ -62,7 +62,7 @@ env:
 
 deploy:
   provider: script
-  script: deploy.sh
+  script: bash deploy.sh
   file_glob: true
   file: "platforms/android/app/build/outputs/apk/**/*/ionictravis-*.apk"
   skip_cleanup: true
