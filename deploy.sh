@@ -2,5 +2,5 @@
 
 if $UPLOAD_TO_CRASHLYTICS ; then
 	cd platforms/android 
-    	gradle  crashlyticsUploadDistributionRelease
+    	gradle  crashlyticsUploadDistributionDevRelease
 fi
