@@ -43,8 +43,7 @@ cache:
   - $HOME/.cache/yarn/v1/
 before_install:
 - export LANG=en_US.UTF-8
-- export
-CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=http\\://services.gradle.org/distributions/gradle-4.1-all.zip
+- export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=http\\://services.gradle.org/distributions/gradle-4.1-all.zip
 - nvm install 8
 - npm install -g ionic cordova
 - openssl aes-256-cbc -K $encrypted_d72929d619b7_key -iv $encrypted_d72929d619b7_iv -in ./config/config.tar.enc -out ./config/config.tar -d
