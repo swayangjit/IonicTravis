@@ -31,6 +31,9 @@ done < "$file"
 
 npm i @ionic/app-scripts
 npm install
+cd cordova-plugin
+ionic cordova plugin add $TRAVIS_BUILD_DIR/cordova-plugin/cordova-plugin-crashlytics
+cd ..
 
 #for cordova_plugin in "${CORDOVA[@]}"
 #do
