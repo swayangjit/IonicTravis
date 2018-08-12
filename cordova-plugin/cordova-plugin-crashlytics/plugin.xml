@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-crashlytics" version="1.0.0">
+    <name>Cordova Plugin Template</name>
+    <description></description>
+    <keywords></keywords>
+
+    
+    <!-- android -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="IonicCrashlytics">
+                <param name="android-package" value="com.ionic.IonicCrashlytics" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/com/ionic/IonicApplication.java" target-dir="src/com/ionic/" />
+ 	<source-file src="src/android/com/ionic/IonicCrashlytics.java" target-dir="src/com/ionic/" />
+
+    </platform>
+
+  
+</plugin>
