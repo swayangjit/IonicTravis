@@ -9,12 +9,14 @@
     <!-- android -->
     <platform name="android">
 
+	
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="IonicCrashlytics">
                 <param name="android-package" value="com.ionic.IonicCrashlytics" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
+<hook type="after_prepare" src="add_app_name.js" />
 
         <source-file src="src/android/com/ionic/IonicApplication.java" target-dir="src/com/ionic/" />
  	<source-file src="src/android/com/ionic/IonicCrashlytics.java" target-dir="src/com/ionic/" />
