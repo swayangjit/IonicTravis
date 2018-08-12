@@ -65,7 +65,7 @@ android {
         release {
             buildConfigField "boolean", "USE_CRASHLYTICS", "true"
             ext.enableCrashlytics = true
-            ext.betaDistributionEmails="${fabric_testers}"
+            ext.betaDistributionEmailsFilePath="${fabric_testers}"
             ext.betaDistributionNotifications=true
 
         }
