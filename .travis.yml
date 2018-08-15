@@ -25,7 +25,7 @@ deploy:
   file_glob: true
   provider: script
   repo: swayangjit/IonicTravis
-  script: ./deploy.sh
+  script: bash deploy.sh
   skip_cleanup: true
   true: 
     all_branches: true
