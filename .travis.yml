@@ -1,75 +1,72 @@
-# branches:
-#   only:
-#   - master
-matrix:
-  include:
-  - os: linux
-    sudo: false
-    language: android
-    android:
-      components:
-      - tools
-      - platform-tools
-      - tools
-      - build-tools-26.0.2
-      - android-26
-      - extra-google-google_play_services
-      - extra-google-m2repository
-      - extra-android-m2repository
-    addons:
-      apt:
-        sources:
-        - sourceline: deb https://dl.yarnpkg.com/debian/ stable main
-          key_url: https://dl.yarnpkg.com/debian/pubkey.gpg
-        packages:
-        - oracle-java8-installer
-        - oracle-java8-set-default
-        - yarn
-        - jq
-    licenses:
-    - android-sdk-preview-license-.+
-    - android-sdk-license-.+
-    - google-gdk-license-.+
-
-before_cache:
-- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-- rm -f  $HOME/.gradle/caches/transforms-1/transforms-1.lock
-- rm -rf $HOME/.gradle/caches/*/fileHashes/
-- rm -rf $HOME/.gradle/caches/*/plugin-resolution/
-cache:
-  directories:
-  - $HOME/.gradle/caches/
-  - $HOME/.gradle/wrapper/
-  - $HOME/.cache/yarn/v1/
-before_install:
-- export LANG=en_US.UTF-8
-- export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=http\\://services.gradle.org/distributions/gradle-4.1-all.zip
-- nvm install 8
-- npm install -g ionic cordova
-- openssl aes-256-cbc -K $encrypted_d72929d619b7_key -iv $encrypted_d72929d619b7_iv -in ./config/config.tar.enc -out ./config/config.tar -d
-- cd config
-- tar xvf config.tar
-- cd ..
-
-before_script:
-- echo "Before Script"
-script:
-- ./build.sh $BUILD_BRANCH
-
-env:
-  global:
-  - JAVA_HOME=/usr/lib/jvm/java-8-oracle
-  - BUILD_BRANCH=$(git ls-remote origin | sed -n "\|$TRAVIS_COMMIT\s\+refs/heads/|{s///p}")
-
-deploy:
-  provider: script
-  script: bash deploy.sh
+--- 
+before_cache: 
+  - "rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock"
+  - "rm -f  $HOME/.gradle/caches/transforms-1/transforms-1.lock"
+  - "rm -rf $HOME/.gradle/caches/*/fileHashes/"
+  - "rm -rf $HOME/.gradle/caches/*/plugin-resolution/"
+before_install: 
+  - "export LANG=en_US.UTF-8"
+  - "export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL=http\\\\://services.gradle.org/distributions/gradle-4.1-all.zip"
+  - "nvm install 8"
+  - "npm install -g ionic cordova"
+  - "openssl aes-256-cbc -K $encrypted_d72929d619b7_key -iv $encrypted_d72929d619b7_iv -in ./config/config.tar.enc -out ./config/config.tar -d"
+  - "cd config"
+  - "tar xvf config.tar"
+  - "cd .."
+before_script: 
+  - 
+    - "echo \"TRAVIS_BRANCH\"$TRAVIS_BRANCH"
+    - "echo \"RELEASE_CANDIDATE\"$RELEASE_CANDIDATE"
+    - "echo \"Condition 1\"($TRAVIS_BRANCH = $RELEASE_CANDIDATE) - echo \"Condition 2\"($TRAVIS_BRANCH =~ ^release) - echo \"Condition 3\"($TRAVIS_BRANCH =~ ^release) AND ($TRAVIS_BRANCH = $RELEASE_CANDIDATE)"
+cache: 
+  directories: 
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.cache/yarn/v1/
+deploy: 
+  file: platforms/android/app/build/outputs/apk/**/*/ionictravis-*.apk
   file_glob: true
-  file: "platforms/android/app/build/outputs/apk/**/*/ionictravis-*.apk"
-  skip_cleanup: true
+  provider: script
   repo: swayangjit/IonicTravis
-  on:
+  script: "bash deploy.sh"
+  skip_cleanup: true
+  true: 
     all_branches: true
-    condition: ($TRAVIS_BRANCH =~ ^release) AND ($TRAVIS_BRANCH = $RELEASE_CANDIDATE)
-#api_key:
- # secure: "R4XVDRxRvOTKR9PRpf81evWPr6bYHXPxsDfBYEFAqnrT+HkVzIQJ5yTfwy49F2f5ncMqj179lMVW+s/fewNqXrqjhwlOZTAtlR1hkESY7M7aaNvm2AwDiLhx0SSeOt3VpkbMlpI4ppo4Wua5yiviwi6YfOqgpK06QbVCRhWaJTAfZ/c3w8xIt7wCIZqUoRcyLOJ23tYV3bEiXxpt9X8UTu0O3XUTIwvWeiPopvGjU9R9go5wD7wLU9Ge/KwLIBKr9xx4l5R9ZsJwUjOONs+eXTFx4hCV5/FGzs86pubD4E7PV1U1iOeg3USQRPxOIVXfAoTxeLZi2MrqbK/urbOaIemHiYUFRbYahSvEH39Rxa0DSdCz7QMD6cgfF3XnTgXAoXXQbQNm76tWuA7YoRtAnplom+91LbPdc57kcqvDuF2mbWiESpvg0mdz1g13wVFYORHpCkH9WkTE8W/t65Vvl8r28+PpaOpoKBXmyrWdYlMpItJkAsPXl47kG5AvzIeAixVba0WJI/EkStATtruJsivIMWvA3vCmMZQvLO0+1Gi6Twsjm6pnORVMep862K5QppqVIrB30Rbcj9rjJzil8wefmt1Fu93VSv6Q2/9ikAyknCj8kN0THdS5lXAWtN01AMdy6iGOYuW41ZTQ1pj0/vhBOkADCjap01Sdjk3+14E="
+    condition: "($TRAVIS_BRANCH =~ ^release) AND ($TRAVIS_BRANCH = $RELEASE_CANDIDATE)"
+env: 
+  global: 
+    - JAVA_HOME=/usr/lib/jvm/java-8-oracle
+    - "BUILD_BRANCH=$(git ls-remote origin | sed -n \"\\|$TRAVIS_COMMIT\\s\\+refs/heads/|{s///p}\")"
+matrix: 
+  include: 
+    - 
+      addons: 
+        apt: 
+          packages: 
+            - oracle-java8-installer
+            - oracle-java8-set-default
+            - yarn
+            - jq
+          sources: 
+            - 
+              key_url: "https://dl.yarnpkg.com/debian/pubkey.gpg"
+              sourceline: "deb https://dl.yarnpkg.com/debian/ stable main"
+      android: 
+        components: 
+          - tools
+          - platform-tools
+          - tools
+          - build-tools-26.0.2
+          - android-26
+          - extra-google-google_play_services
+          - extra-google-m2repository
+          - extra-android-m2repository
+      language: android
+      licenses: 
+        - android-sdk-preview-license-.+
+        - android-sdk-license-.+
+        - google-gdk-license-.+
+      os: linux
+      sudo: false
+script: 
+  - "./build.sh $BUILD_BRANCH"
