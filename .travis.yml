@@ -14,12 +14,7 @@ before_install:
   - "tar xvf config.tar"
   - "cd .."
 before_script: 
-  - 
-    - echo "TRAVIS_BRANCH"$TRAVIS_BRANCH
-    - echo "RELEASE_CANDIDATE"$RELEASE_CANDIDATE
-    - echo "Condition 1"($TRAVIS_BRANCH = $RELEASE_CANDIDATE) 
-    - echo "Condition 2"($TRAVIS_BRANCH =~ ^release) 
-    
+  - echo "Before Script"
 cache: 
   directories: 
     - $HOME/.gradle/caches/
