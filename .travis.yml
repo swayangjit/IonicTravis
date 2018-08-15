@@ -30,11 +30,11 @@ deploy:
   file_glob: true
   provider: script
   repo: swayangjit/IonicTravis
-  script: "bash deploy.sh"
+  script: ./deploy.sh
   skip_cleanup: true
   true: 
     all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^release AND $TRAVIS_BRANCH = $RELEASE_CANDIDATE
+    condition: $TRAVIS_BRANCH =~ ^release
 env: 
   global: 
     - JAVA_HOME=/usr/lib/jvm/java-8-oracle
