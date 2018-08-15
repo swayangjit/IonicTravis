@@ -70,6 +70,6 @@ deploy:
   repo: swayangjit/IonicTravis
   on:
     all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^release
+    condition: ($TRAVIS_BRANCH =~ ^release) AND ($TRAVIS_BRANCH =~ $RELEASE_CANDIDATE)
 #api_key:
  # secure: "R4XVDRxRvOTKR9PRpf81evWPr6bYHXPxsDfBYEFAqnrT+HkVzIQJ5yTfwy49F2f5ncMqj179lMVW+s/fewNqXrqjhwlOZTAtlR1hkESY7M7aaNvm2AwDiLhx0SSeOt3VpkbMlpI4ppo4Wua5yiviwi6YfOqgpK06QbVCRhWaJTAfZ/c3w8xIt7wCIZqUoRcyLOJ23tYV3bEiXxpt9X8UTu0O3XUTIwvWeiPopvGjU9R9go5wD7wLU9Ge/KwLIBKr9xx4l5R9ZsJwUjOONs+eXTFx4hCV5/FGzs86pubD4E7PV1U1iOeg3USQRPxOIVXfAoTxeLZi2MrqbK/urbOaIemHiYUFRbYahSvEH39Rxa0DSdCz7QMD6cgfF3XnTgXAoXXQbQNm76tWuA7YoRtAnplom+91LbPdc57kcqvDuF2mbWiESpvg0mdz1g13wVFYORHpCkH9WkTE8W/t65Vvl8r28+PpaOpoKBXmyrWdYlMpItJkAsPXl47kG5AvzIeAixVba0WJI/EkStATtruJsivIMWvA3vCmMZQvLO0+1Gi6Twsjm6pnORVMep862K5QppqVIrB30Rbcj9rjJzil8wefmt1Fu93VSv6Q2/9ikAyknCj8kN0THdS5lXAWtN01AMdy6iGOYuW41ZTQ1pj0/vhBOkADCjap01Sdjk3+14E="
