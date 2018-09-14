@@ -29,10 +29,8 @@ while IFS="=" read -r key value; do
   esac
 done < "$file"
 
-cp -R config/data src/assets/data
-ls src/assets/data/channel
-ls src/assets/data/form
-ls src/assets/data/framework
+#cp -R config/data src/assets/data
+
 npm i @ionic/app-scripts
 npm install
 cd cordova-plugin
@@ -52,7 +50,9 @@ rm -rf platforms
 
 
 ionic cordova platforms add android
-
+ls src/assets/data/channel
+ls src/assets/data/form
+ls src/assets/data/framework
 
 
 ionic cordova build android --prod --release --buildConfig ./config/build.json
