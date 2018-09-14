@@ -49,5 +49,7 @@ rm -rf platforms
 
 ionic cordova platforms add android
 
+ls src/assets
+
 ionic cordova build android --prod --release --buildConfig ./config/build.json
 

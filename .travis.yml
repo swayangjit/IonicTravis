@@ -53,7 +53,6 @@ before_install:
 before_script:
 - echo "Before Script"
 script:
--ls src/assets
 - ./build.sh $BUILD_BRANCH
 
 env:
