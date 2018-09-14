@@ -53,5 +53,7 @@ ionic cordova platforms add android
 
 ionic cordova build android --prod --release --buildConfig ./config/build.json
 
-ls src/assets
+ls src/assets/data/channel
+ls src/assets/data/form
+ls src/assets/data/framework
 
