@@ -1,0 +1,2 @@
+# IonicTravis
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cd043c1a3f14438c8d5b56f75f315513)](https://app.codacy.com/app/swayangjit/IonicTravis?utm_source=github.com&utm_medium=referral&utm_content=swayangjit/IonicTravis&utm_campaign=Badge_Grade_Dashboard)
